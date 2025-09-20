@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Conversion Test - Financial Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .test-section h2 {
+            color: #34495e;
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select, button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input[type="number"] {
+            width: 200px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .error {
+            background-color: #ffebee;
+            border-color: #f44336;
+            color: #c62828;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        .currency-display {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .rate-info {
+            background-color: #e3f2fd;
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Currency Conversion Test</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Test the currency conversion functionality of your Financial Dashboard
+        </p>
+
+        <!-- Currency Rate Test -->
+        <div class="test-section">
+            <h2>📊 Current Exchange Rate</h2>
+            <button onclick="getCurrencyRate()">Get Current USD to INR Rate</button>
+            <div id="rateResult" class="result" style="display: none;"></div>
+        </div>
+
+        <!-- Currency Conversion Test -->
+        <div class="test-section">
+            <h2>💱 Currency Conversion</h2>
+            <div class="form-group">
+                <label for="amount">Amount (USD):</label>
+                <input type="number" id="amount" value="100" step="0.01" min="0">
+            </div>
+            <button onclick="convertCurrency()">Convert USD to INR</button>
+            <div id="convertResult" class="result" style="display: none;"></div>
+        </div>
+
+        <!-- Currency Formatting Test -->
+        <div class="test-section">
+            <h2>🎨 Currency Formatting</h2>
+            <div class="form-group">
+                <label for="formatAmount">Amount:</label>
+                <input type="number" id="formatAmount" value="1234567.89" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="formatCurrency">Currency:</label>
+                <select id="formatCurrency">
+                    <option value="INR">INR (₹)</option>
+                    <option value="USD">USD ($)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="decimals">Decimal Places:</label>
+                <input type="number" id="decimals" value="2" min="0" max="10">
+            </div>
+            <button onclick="formatCurrency()">Format Currency</button>
+            <div id="formatResult" class="result" style="display: none;"></div>
+        </div>
+
+        <!-- Quick Test Buttons -->
+        <div class="test-section">
+            <h2>⚡ Quick Tests</h2>
+            <button onclick="testCommonAmounts()">Test Common Amounts</button>
+            <button onclick="testLargeNumbers()">Test Large Numbers</button>
+            <button onclick="testAllEndpoints()">Test All Currency Endpoints</button>
+            <div id="quickTestResult" class="result" style="display: none;"></div>
+        </div>
+
+        <!-- API Status -->
+        <div class="test-section">
+            <h2>🔍 API Status</h2>
+            <button onclick="checkAPIStatus()">Check API Status</button>
+            <div id="apiStatus" class="result" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8000';
+
+        async function makeRequest(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    },
+                    ...options
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                return await response.json();
+            } catch (error) {
+                throw new Error(`Request failed: ${error.message}`);
+            }
+        }
+
+        function showResult(elementId, content, isError = false) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `result ${isError ? 'error' : ''}`;
+            element.innerHTML = content;
+        }
+
+        async function getCurrencyRate() {
+            try {
+                showResult('rateResult', '<div class="loading">Loading exchange rate...</div>');
+                
+                const data = await makeRequest(`${API_BASE_URL}/currency/rate`);
+                
+                const content = `
+                    <div class="currency-display">1 USD = ₹${data.usd_to_inr_rate.toFixed(2)}</div>
+                    <div class="rate-info">
+                        <strong>Rate Info:</strong><br>
+                        Last Updated: ${data.last_updated || 'Never'}<br>
+                        Cache Duration: ${data.cache_duration_seconds} seconds<br>
+                        API Key Configured: ${data.api_key_configured ? 'Yes' : 'No'}
+                    </div>
+                `;
+                
+                showResult('rateResult', content);
+            } catch (error) {
+                showResult('rateResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        async function convertCurrency() {
+            try {
+                const amount = parseFloat(document.getElementById('amount').value);
+                if (isNaN(amount) || amount < 0) {
+                    throw new Error('Please enter a valid positive number');
+                }
+
+                showResult('convertResult', '<div class="loading">Converting currency...</div>');
+                
+                const data = await makeRequest(`${API_BASE_URL}/currency/convert?amount=${amount}&from_currency=USD&to_currency=INR`);
+                
+                const content = `
+                    <div class="currency-display">
+                        ${data.original_amount} ${data.original_currency} = ${data.formatted_amount}
+                    </div>
+                    <div class="rate-info">
+                        <strong>Conversion Details:</strong><br>
+                        Exchange Rate: 1 USD = ₹${data.exchange_rate.toFixed(2)}<br>
+                        Converted Amount: ₹${data.converted_amount.toFixed(2)}<br>
+                        Last Updated: ${data.last_updated}
+                    </div>
+                `;
+                
+                showResult('convertResult', content);
+            } catch (error) {
+                showResult('convertResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        async function formatCurrency() {
+            try {
+                const amount = parseFloat(document.getElementById('formatAmount').value);
+                const currency = document.getElementById('formatCurrency').value;
+                const decimals = parseInt(document.getElementById('decimals').value);
+                
+                if (isNaN(amount)) {
+                    throw new Error('Please enter a valid number');
+                }
+
+                showResult('formatResult', '<div class="loading">Formatting currency...</div>');
+                
+                const data = await makeRequest(`${API_BASE_URL}/currency/format?amount=${amount}&currency=${currency}&decimals=${decimals}`);
+                
+                const content = `
+                    <div class="currency-display">${data.formatted}</div>
+                    <div class="rate-info">
+                        <strong>Formatting Details:</strong><br>
+                        Original Amount: ${data.amount}<br>
+                        Currency: ${data.currency}<br>
+                        Decimal Places: ${data.decimals}
+                    </div>
+                `;
+                
+                showResult('formatResult', content);
+            } catch (error) {
+                showResult('formatResult', `Error: ${error.message}`, true);
+            }
+        }
+
+        async function testCommonAmounts() {
+            const amounts = [1, 10, 100, 1000, 10000, 100000, 1000000];
+            let results = '<h3>Common Amount Tests:</h3>';
+            
+            for (const amount of amounts) {
+                try {
+                    const data = await makeRequest(`${API_BASE_URL}/currency/convert?amount=${amount}&from_currency=USD&to_currency=INR`);
+                    results += `<div>$${amount.toLocaleString()} = ${data.formatted_amount}</div>`;
+                } catch (error) {
+                    results += `<div style="color: red;">$${amount.toLocaleString()} = Error: ${error.message}</div>`;
+                }
+            }
+            
+            showResult('quickTestResult', results);
+        }
+
+        async function testLargeNumbers() {
+            const amounts = [1000000, 10000000, 100000000, 1000000000, 10000000000];
+            let results = '<h3>Large Number Tests:</h3>';
+            
+            for (const amount of amounts) {
+                try {
+                    const data = await makeRequest(`${API_BASE_URL}/currency/convert?amount=${amount}&from_currency=USD&to_currency=INR`);
+                    results += `<div>$${amount.toLocaleString()} = ${data.formatted_amount}</div>`;
+                } catch (error) {
+                    results += `<div style="color: red;">$${amount.toLocaleString()} = Error: ${error.message}</div>`;
+                }
+            }
+            
+            showResult('quickTestResult', results);
+        }
+
+        async function testAllEndpoints() {
+            let results = '<h3>All Currency Endpoints Test:</h3>';
+            
+            // Test rate endpoint
+            try {
+                const rateData = await makeRequest(`${API_BASE_URL}/currency/rate`);
+                results += `<div>✅ Rate endpoint: 1 USD = ₹${rateData.usd_to_inr_rate.toFixed(2)}</div>`;
+            } catch (error) {
+                results += `<div style="color: red;">❌ Rate endpoint: ${error.message}</div>`;
+            }
+            
+            // Test convert endpoint
+            try {
+                const convertData = await makeRequest(`${API_BASE_URL}/currency/convert?amount=100&from_currency=USD&to_currency=INR`);
+                results += `<div>✅ Convert endpoint: $100 = ${convertData.formatted_amount}</div>`;
+            } catch (error) {
+                results += `<div style="color: red;">❌ Convert endpoint: ${error.message}</div>`;
+            }
+            
+            // Test format endpoint
+            try {
+                const formatData = await makeRequest(`${API_BASE_URL}/currency/format?amount=1234567.89&currency=INR&decimals=2`);
+                results += `<div>✅ Format endpoint: ${formatData.formatted}</div>`;
+            } catch (error) {
+                results += `<div style="color: red;">❌ Format endpoint: ${error.message}</div>`;
+            }
+            
+            showResult('quickTestResult', results);
+        }
+
+        async function checkAPIStatus() {
+            try {
+                showResult('apiStatus', '<div class="loading">Checking API status...</div>');
+                
+                const data = await makeRequest(`${API_BASE_URL}/health`);
+                
+                const content = `
+                    <div style="color: green; font-weight: bold;">✅ API is running</div>
+                    <div class="rate-info">
+                        <strong>API Status:</strong><br>
+                        Status: ${data.status}<br>
+                        Timestamp: ${data.timestamp}<br>
+                        Version: ${data.version || 'Unknown'}
+                    </div>
+                `;
+                
+                showResult('apiStatus', content);
+            } catch (error) {
+                showResult('apiStatus', `<div style="color: red;">❌ API is not accessible: ${error.message}</div>`, true);
+            }
+        }
+
+        // Auto-check API status on page load
+        window.onload = function() {
+            checkAPIStatus();
+        };
+    </script>
+</body>
+</html>

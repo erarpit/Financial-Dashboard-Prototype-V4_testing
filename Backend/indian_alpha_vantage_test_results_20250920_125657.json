@@ -1,0 +1,265 @@
+{
+  "total_tests": 32,
+  "passed": 0,
+  "failed": 32,
+  "errors": [
+    "Alpha Vantage Service Status: Unexpected status code: 404",
+    "Symbol Mapping for RELIANCE.NS: Failed to get quote: 404",
+    "Symbol Mapping for TCS.NS: Failed to get quote: 404",
+    "Symbol Mapping for HDFCBANK.NS: Failed to get quote: 404",
+    "GET /alpha-vantage/quote/AAPL: Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for AAPL\"}",
+    "GET /alpha-vantage/quote/MSFT: Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for MSFT\"}",
+    "GET /alpha-vantage/quote/GOOGL: Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for GOOGL\"}",
+    "GET /alpha-vantage/quote/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/quote/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for TCS.NS\"}",
+    "GET /alpha-vantage/quote/HDFCBANK.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for HDFCBANK.NS\"}",
+    "GET /alpha-vantage/quote/INFY.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for INFY.NS\"}",
+    "GET /alpha-vantage/quote/HINDUNILVR.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for HINDUNILVR.NS\"}",
+    "GET /alpha-vantage/daily/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/daily/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/daily/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for TCS.NS\"}",
+    "GET /alpha-vantage/daily/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for TCS.NS\"}",
+    "GET /alpha-vantage/daily/HDFCBANK.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for HDFCBANK.NS\"}",
+    "GET /alpha-vantage/daily/HDFCBANK.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for HDFCBANK.NS\"}",
+    "GET /alpha-vantage/intraday/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/intraday/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/intraday/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/intraday/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for TCS.NS\"}",
+    "GET /alpha-vantage/intraday/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for TCS.NS\"}",
+    "GET /alpha-vantage/intraday/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for TCS.NS\"}",
+    "GET /alpha-vantage/indicators/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No SMA data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/indicators/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No SMA data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/indicators/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No EMA data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/indicators/RELIANCE.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No EMA data found for RELIANCE.NS\"}",
+    "GET /alpha-vantage/indicators/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No SMA data found for TCS.NS\"}",
+    "GET /alpha-vantage/indicators/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No SMA data found for TCS.NS\"}",
+    "GET /alpha-vantage/indicators/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No EMA data found for TCS.NS\"}",
+    "GET /alpha-vantage/indicators/TCS.NS: Status: 404 (Expected: 200) | Error: {\"detail\":\"No EMA data found for TCS.NS\"}"
+  ],
+  "test_details": [
+    {
+      "test_name": "Alpha Vantage Service Status",
+      "success": false,
+      "message": "Unexpected status code: 404",
+      "timestamp": "2025-09-20T12:55:47.380301",
+      "response_data": null
+    },
+    {
+      "test_name": "Symbol Mapping for RELIANCE.NS",
+      "success": false,
+      "message": "Failed to get quote: 404",
+      "timestamp": "2025-09-20T12:55:50.586708",
+      "response_data": null
+    },
+    {
+      "test_name": "Symbol Mapping for TCS.NS",
+      "success": false,
+      "message": "Failed to get quote: 404",
+      "timestamp": "2025-09-20T12:55:54.594672",
+      "response_data": null
+    },
+    {
+      "test_name": "Symbol Mapping for HDFCBANK.NS",
+      "success": false,
+      "message": "Failed to get quote: 404",
+      "timestamp": "2025-09-20T12:55:57.957308",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/quote/AAPL",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for AAPL\"}",
+      "timestamp": "2025-09-20T12:55:59.393778",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/quote/MSFT",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for MSFT\"}",
+      "timestamp": "2025-09-20T12:56:00.207531",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/quote/GOOGL",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for GOOGL\"}",
+      "timestamp": "2025-09-20T12:56:00.973325",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/quote/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:11.679947",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/quote/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:14.857177",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/quote/HDFCBANK.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for HDFCBANK.NS\"}",
+      "timestamp": "2025-09-20T12:56:18.130516",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/quote/INFY.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for INFY.NS\"}",
+      "timestamp": "2025-09-20T12:56:21.207138",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/quote/HINDUNILVR.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No quote data found for HINDUNILVR.NS\"}",
+      "timestamp": "2025-09-20T12:56:24.685635",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/daily/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:28.056103",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/daily/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:31.241198",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/daily/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:35.127537",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/daily/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:38.606655",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/daily/HDFCBANK.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for HDFCBANK.NS\"}",
+      "timestamp": "2025-09-20T12:56:42.195229",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/daily/HDFCBANK.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No daily data found for HDFCBANK.NS\"}",
+      "timestamp": "2025-09-20T12:56:45.479329",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/intraday/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:46.293038",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/intraday/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:47.216803",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/intraday/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:48.239636",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/intraday/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:49.165475",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/intraday/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:50.075479",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/intraday/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No intraday data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:50.895926",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/indicators/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No SMA data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:51.927281",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/indicators/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No SMA data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:52.843086",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/indicators/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No EMA data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:53.770749",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/indicators/RELIANCE.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No EMA data found for RELIANCE.NS\"}",
+      "timestamp": "2025-09-20T12:56:54.584594",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/indicators/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No SMA data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:55.606268",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/indicators/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No SMA data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:56.323329",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/indicators/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No EMA data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:57.139337",
+      "response_data": null
+    },
+    {
+      "test_name": "GET /alpha-vantage/indicators/TCS.NS",
+      "success": false,
+      "message": "Status: 404 (Expected: 200) | Error: {\"detail\":\"No EMA data found for TCS.NS\"}",
+      "timestamp": "2025-09-20T12:56:57.961892",
+      "response_data": null
+    }
+  ]
+}

@@ -1,0 +1,333 @@
+```css
+/* AI Chat Styles */
+.ai-chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.ai-chat-container.minimized {
+    height: 60px;
+    overflow: hidden;
+}
+
+.chat-header {
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.ticker-select {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 12px;
+}
+
+.minimize-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    max-height: 300px;
+}
+
+.message {
+    margin-bottom: 15px;
+}
+
+.ai-message .message-content {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 12px 12px 12px 4px;
+    border-left: 4px solid #667eea;
+}
+
+.user-message .message-content {
+    background: #667eea;
+    color: white;
+    padding: 12px;
+    border-radius: 12px 12px 4px 12px;
+    margin-left: 40px;
+}
+
+.message-time {
+    font-size: 11px;
+    color: #6c757d;
+    margin-top: 4px;
+    text-align: right;
+}
+
+.quick-questions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 15px;
+}
+
+.quick-question {
+    background: #e9ecef;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quick-question:hover {
+    background: #667eea;
+    color: white;
+}
+
+.chat-input-container {
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+}
+
+.chat-input-container input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    outline: none;
+}
+
+.send-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+
+.loading-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 15px;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #dee2e6;
+    border-top: 2px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.context-info {
+    background: #e3f2fd;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    border-left: 4px solid #2196f3;
+}
+
+.context-header {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #1976d2;
+}
+
+.price-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.current-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.price-change.positive { color: #28a745; }
+.price-change.negative { color: #dc3545; }
+
+/* Volume Analyzer Styles */
+.volume-analyzer-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    margin: 20px;
+    padding: 20px;
+}
+
+.volume-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.volume-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.metric-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.metric-label {
+    font-size: 12px;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.metric-value {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.metric-value.bullish { color: #28a745; }
+.metric-value.bearish { color: #dc3545; }
+.metric-value.neutral { color: #ffc107; }
+
+.volume-chart-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.volume-insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.insight-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}
+
+.insight-label {
+    font-weight: bold;
+    color: #495057;
+}
+
+/* Live Ticker Styles */
+.live-ticker-container {
+    background: #000;
+    color: #00ff00;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ticker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.live-indicator {
+    color: #ff4444;
+    font-weight: bold;
+}
+
+.ticker-scroll {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-content {
+    display: flex;
+    animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 40px;
+    flex-shrink: 0;
+}
+
+.ticker-symbol {
+    font-weight: bold;
+    color: #fff;
+}
+
+.ticker-price {
+    color: #00ff00;
+}
+
+.ticker-change.positive { color: #00ff00; }
+.ticker-change.negative { color: #ff4444; }
+.ticker-change.neutral { color: #ffff00; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ai-chat-container {
+        width: 90%;
+        right: 5%;
+        bottom: 10px;
+    }
+    
+    .volume-analyzer-container {
+        margin: 10px;
+        padding: 15px;
+    }
+    
+    .volume-metrics {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+```
